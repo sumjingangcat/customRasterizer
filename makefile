@@ -12,11 +12,13 @@ all: $(DESTDIR)$(TARGET)
 
 $(DESTDIR)$(TARGET): $(OBJECTS)
 	$(SYSCONF_LINK) -Wall $(LDFLAGS) -o $(DESTDIR)$(TARGET) $(OBJECTS) $(LIBS)
-#convert to png
-	convert $(DESTDIR)$(TARGET).tga $(DESTDIR)$(TARGET).png 
 
 $(OBJECTS): %.o: %.cpp
 	$(SYSCONF_LINK) -Wall $(CPPFLAGS) -c $(CFLAGS) $< -o $@
+
+#convert to png
+convert:
+	convert *.tga *.png
 
 clean:
 	-rm -f $(OBJECTS)
