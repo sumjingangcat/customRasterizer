@@ -7,6 +7,7 @@ DESTDIR = ./
 TARGET  = main
 
 CONVERTABLE := $(wildcard *.tga)
+CONVERTABLE_DESTDIR = ./picture/
 
 OBJECTS := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
 
@@ -20,7 +21,7 @@ $(OBJECTS): %.o: %.cpp
 
 #convert to png
 convert:
-	convert $(CONVERTABLE).tga $(CONVERTABLE).png
+	convert $(CONVERTABLE).tga $(CONVERTABLE_DESTDIR)$(CONVERTABLE).png
 
 clean:
 	-rm -f $(OBJECTS)
